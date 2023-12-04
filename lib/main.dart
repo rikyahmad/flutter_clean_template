@@ -1,78 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_template/presentation/theme.dart';
+import 'package:flutter_clean_template/app/config/constant.dart';
+import 'package:flutter_clean_template/app/config/theme.dart';
+import 'package:flutter_clean_template/presentation/controllers/auth/auth_binding.dart';
+import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'presentation/page/home/home_page.dart';
+
+void main() async {
+  await initServices();
+  runApp(const App());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class App extends StatefulWidget {
+  const App({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<App> createState() => _AppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _AppState extends State<App> {
   var themeMode = ThemeMode.light;
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     const theme = CustomTheme();
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: 'Flutter Clean Architecture',
       themeMode: themeMode,
       theme: theme.toThemeData(),
       darkTheme: theme.toThemeDataDark(),
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      initialRoute: "/",
+      initialBinding: AuthBinding(),
+      home: const HomePage(),
     );
   }
 }
