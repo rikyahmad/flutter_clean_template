@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_template/app/config/constant.dart';
+import 'package:flutter_clean_template/app/config/page.dart';
+import 'package:flutter_clean_template/app/config/route.dart';
 import 'package:flutter_clean_template/app/config/theme.dart';
 import 'package:flutter_clean_template/presentation/controllers/auth/auth_binding.dart';
 import 'package:get/get.dart';
-
-import 'presentation/page/home/home_page.dart';
 
 void main() async {
   await initServices();
@@ -30,9 +30,9 @@ class _AppState extends State<App> {
       theme: theme.toThemeData(),
       darkTheme: theme.toThemeDataDark(),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/",
       initialBinding: AuthBinding(),
-      home: const HomePage(),
+      initialRoute: AppPage.home,
+      getPages: AppRoute.pages,
     );
   }
 }
