@@ -49,7 +49,7 @@ class APIProvider {
 }
 
 class AppException implements Exception {
-  final String? code;
+  dynamic code;
   final String? message;
   final String? details;
 
