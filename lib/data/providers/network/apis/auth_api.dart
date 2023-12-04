@@ -14,12 +14,14 @@ class AuthAPI implements APIRequestRepresentable {
   AuthAPI._({required this.type, this.password, this.username});
 
   AuthAPI.login(String username, String repo) : this._(type: AuthType.login);
+
   AuthAPI.register(String password, String username)
       : this._(type: AuthType.login, username: username, password: password);
 
   @override
-  String get endpoint => APIEndpoint.newsapi;
+  String get endpoint => APIEndpoint.baseUrl;
 
+  @override
   String get path {
     switch (type) {
       case AuthType.login:
@@ -36,9 +38,11 @@ class AuthAPI implements APIRequestRepresentable {
     return HTTPMethod.post;
   }
 
+  @override
   Map<String, String> get headers =>
       {HttpHeaders.contentTypeHeader: 'application/json'};
 
+  @override
   Map<String, String> get query {
     return {HttpHeaders.contentTypeHeader: 'application/json'};
   }
@@ -46,6 +50,7 @@ class AuthAPI implements APIRequestRepresentable {
   @override
   get body => null;
 
+  @override
   Future request() {
     return APIProvider.instance.request(this);
   }

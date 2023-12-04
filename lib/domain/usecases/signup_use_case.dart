@@ -1,9 +1,9 @@
 import 'package:flutter_clean_template/app/core/usecases/pram_usecase.dart';
 import 'package:flutter_clean_template/domain/entities/user.dart';
-import 'package:flutter_clean_template/domain/repositories/auth_repository.dart';
+import 'package:flutter_clean_template/domain/repositories/base_auth_repository.dart';
 
 class SignUpUseCase extends ParamUseCase<User, String> {
-  final AuthenticationRepository _repo;
+  final BaseAuthenticationRepository _repo;
   SignUpUseCase(this._repo);
 
   @override

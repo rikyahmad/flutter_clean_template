@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class DependencyCreator {
   static init() {
-    Get.lazyPut(() => AuthenticationRepositoryIml());
+    Get.lazyPut(() => AuthenticationRepository());
     //Get.lazyPut(() => ArticleRepositoryIml());
   }
 }
