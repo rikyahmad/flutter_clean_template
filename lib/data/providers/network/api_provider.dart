@@ -43,15 +43,15 @@ class APIProvider {
         throw FetchDataException('Internal Server Error');
       default:
         throw FetchDataException(
-            'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
+            'Error occurred while Communication with Server with StatusCode : ${response.statusCode}');
     }
   }
 }
 
 class AppException implements Exception {
-  final code;
-  final message;
-  final details;
+  final String? code;
+  final String? message;
+  final String? details;
 
   AppException({this.code, this.message, this.details});
 

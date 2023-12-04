@@ -25,7 +25,7 @@ class AuthAPI implements APIRequestRepresentable {
   String get path {
     switch (type) {
       case AuthType.login:
-        return "/$username/$username";
+        return "/$username/$password";
       case AuthType.logout:
         return "/login";
       default:
